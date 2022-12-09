@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:18:45 by gade-alm          #+#    #+#             */
-/*   Updated: 2022/12/09 16:00:38 by gade-alm         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:44:55 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,17 @@ void *teste(void *abc)
 
 int main(int ac, char **av)
 {
+	t_data	data;
+
 	if (ac < 5 || ac > 6)
 		return (printf("Error\n"));
-	pthread_t thread[3];
-	
-	int i = -1;
-	while (++i < 3)
-		pthread_create(&thread[i], NULL, teste, NULL);
-	while (--i >= 0)
-		pthread_join(thread[i], NULL);
+	data.philos = ft_atoi(av[1]);
+	data.die_time = ft_atoi(av[2]);
+	data.eat_time = ft_atoi(av[3]);
+	data.sleep_time = ft_atoi(av[4]);
+	if (ac == 6)
+		data.n_must_eat = ft_atoi(av[5]);
+	else
+		data.n_must_eat = -1;
+	printf("%i\n", data.die_time);
 }
