@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   prints.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 14:18:45 by gade-alm          #+#    #+#             */
-/*   Updated: 2022/12/12 18:44:02 by gabriel          ###   ########.fr       */
+/*   Created: 2022/12/12 17:17:48 by gabriel           #+#    #+#             */
+/*   Updated: 2022/12/12 18:44:17 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-// Your(s) program(s) should take the following arguments:
-// number_of_philosophers time_to_die time_to_eat time_to_sleep
-// [number_of_times_each_philosopher_must_eat]
-void	*teste(void *abc)
-{
-	(void)abc;
-	printf("teste %d\n", getpid());
-	return (NULL);
-}
 
-int	main(int ac, char **av)
+void	print_message(t_philos philos, char *str)
 {
 	t_philos	philos;
 
-	if (ac < 5 || ac > 6)
-		return (printf("Error\n"));
-	philos = start_philos(ac, av);
-	print_message(philos, "teste");
-	return (1);
+	printf("%s\n", str);
+	printf("%i philos", philos.data.philo_num);
 }

@@ -3,19 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   new_philo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:19:58 by gade-alm          #+#    #+#             */
-/*   Updated: 2022/12/09 17:49:39 by gade-alm         ###   ########.fr       */
+/*   Updated: 2022/12/12 17:10:11 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-// void	create_philo(int num)
-// {
-// 	t_philos	*philo;
+t_philos	start_philos(int ac, char **av)
+{
+	t_philos	philos;
 
-// 	philo = malloc(sizeof(t_philos) * num);
-// 	pthread_create(&philos->philo, NULL, teste, NULL);
-// }
+	philos.data.philo_num = ft_atoi(av[1]);
+	philos.data.die_time = ft_atoi(av[2]);
+	philos.data.eat_time = ft_atoi(av[3]);
+	philos.data.sleep_time = ft_atoi(av[4]);
+	if (ac == 6)
+		philos.data.must_eat_num = ft_atoi(av[5]);
+	else
+		philos.data.must_eat_num = 0;
+	return (philos);
+}
