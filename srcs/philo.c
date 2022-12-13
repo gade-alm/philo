@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:18:45 by gade-alm          #+#    #+#             */
-/*   Updated: 2022/12/12 18:44:02 by gabriel          ###   ########.fr       */
+/*   Updated: 2022/12/13 16:27:50 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int	main(int ac, char **av)
 		return (printf("Error\n"));
 	philos = start_philos(ac, av);
 	print_message(philos, "teste");
+	gettime();
 	return (1);
 }

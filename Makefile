@@ -6,7 +6,7 @@
 #    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 15:45:10 by gade-alm          #+#    #+#              #
-#    Updated: 2022/12/12 18:41:54 by gabriel          ###   ########.fr        #
+#    Updated: 2022/12/13 16:25:38 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRCS	= srcs/philo.c \
 			srcs/ft_atoi.c \
 			srcs/new_philo.c \
 			srcs/prints.c \
+			srcs/gettime.c \
 
 OBJS	= $(SRCS:.c=.o)
 

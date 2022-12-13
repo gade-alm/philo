@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prints.c                                           :+:      :+:    :+:   */
+/*   gettime.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 17:17:48 by gabriel           #+#    #+#             */
-/*   Updated: 2022/12/13 16:28:18 by gabriel          ###   ########.fr       */
+/*   Created: 2022/12/13 16:24:08 by gabriel           #+#    #+#             */
+/*   Updated: 2022/12/13 17:15:30 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	print_message(t_philos philos, char *str)
+long int	gettime(void)
 {
-	// t_philos	philos;
-	(void)philos;
-	printf("%s\n", str);
+	struct timeval	start;
+	struct timeval	end;
+
+	gettimeofday(&start, NULL);
+	gettimeofday(&end, NULL);
+	while ((end.tv_sec * 1000 + end.tv_usec / 1000) - (start.tv_sec * 1000 + start.tv_usec / 1000) < 2)
+	{	
+		gettimeofday(&end, NULL);
+		printf("%ld miliseconds\n", (end.tv_sec * 1000 + end.tv_usec / 1000) - (start.tv_sec * 1000 + start.tv_usec / 1000));
+	}
+	return ((start.tv_sec * 1000 + start.tv_usec / 1000);
 }

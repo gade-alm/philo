@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:07:06 by gade-alm          #+#    #+#             */
-/*   Updated: 2022/12/12 18:43:41 by gabriel          ###   ########.fr       */
+/*   Updated: 2022/12/13 16:42:26 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include <pthread.h>
 # include <stdio.h>
 # include <unistd.h>
-# include <stdlib.h>	
+# include <stdlib.h>
+# include <sys/time.h>
 
 typedef struct s_data{
 	int			die_time;
@@ -39,5 +40,6 @@ void		create_philo(int num);
 void		*teste(void *abc);
 t_philos	start_philos(int ac, char **av);
 void		print_message(t_philos philos, char *str);
+long int	gettime(void);
 
 #endif
