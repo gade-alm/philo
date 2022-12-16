@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:07:06 by gade-alm          #+#    #+#             */
-/*   Updated: 2022/12/13 16:42:26 by gabriel          ###   ########.fr       */
+/*   Updated: 2022/12/16 18:18:39 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,20 @@ typedef struct s_data{
 	int			must_eat_num;
 	int			eat_time;
 	int			philo_num;
+	long int	seconds;
 }			t_data;
 
 typedef struct s_philos{
-	int			p_num;
-	int			fork;
-	pthread_t	philo;
-	t_data		data;
+	pthread_t		philo;
+	t_data			data;
 }		t_philos;
 
 int			ft_atoi(const char *str);
-void		create_philo(int num);
-void		*teste(void *abc);
+t_philos	*phicall(void);
 t_philos	start_philos(int ac, char **av);
-void		print_message(t_philos philos, char *str);
+void		*create_philos(t_philos phi);
+long int	calc_time(long int start, long int end);
 long int	gettime(void);
+void	*print_message(void *arg);
 
 #endif
