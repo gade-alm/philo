@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+         #
+#    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 15:45:10 by gade-alm          #+#    #+#              #
-#    Updated: 2022/12/16 18:14:15 by gade-alm         ###   ########.fr        #
+#    Updated: 2022/12/25 14:51:25 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,11 @@ SRCS	= srcs/philo.c \
 			srcs/prints.c \
 			srcs/gettime.c \
 
-OBJS	= $(SRCS:.c=.o)
+SRCS_DIR = srcs
+
+OBJS = $(subst $(SRCS_DIR), $(OBJS_DIR), $(SRCS:.c=.o))
+
+OBJS_DIR = objs
 
 NAME	= philo
 
@@ -30,9 +34,13 @@ all: $(NAME)
 
 $(NAME):	$(OBJS)
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
+			mkdir -p $(@D)
+			$(CC) $(FLAGS) -c $< -o $@
 	
 clean: 
-	$(RM) $(OBJS)
+	$(RM) $(OBJS_DIR)
 
 fclean: clean
 	$(RM) $(NAME) $(OBJS)

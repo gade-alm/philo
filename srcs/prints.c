@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prints.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:17:48 by gabriel           #+#    #+#             */
-/*   Updated: 2022/12/16 18:19:37 by gade-alm         ###   ########.fr       */
+/*   Updated: 2022/12/25 14:48:56 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	*print_message(void *arg)
 {
-	t_philos *philos;
+	t_data	*philos;
 
-	philos = (t_philos *)arg;
-	printf("teste, %i\n", philos->data.philo_num);
+	philos = (t_data *)arg;
+	printf("teste, %i\n", philos->philo_num);
 	return (0);
 }

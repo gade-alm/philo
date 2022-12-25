@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:18:45 by gade-alm          #+#    #+#             */
-/*   Updated: 2022/12/16 17:55:13 by gade-alm         ###   ########.fr       */
+/*   Updated: 2022/12/25 16:31:50 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@
 
 int	main(int ac, char **av)
 {
-	t_philos	philos;
+	t_data	*data;
 
 	if (ac < 5 || ac > 6)
 		return (printf("Error\n"));
-	philos = start_philos(ac, av);
-	create_philos(philos);
+	data = parse_philo(ac, av);
+	printf("philo %i\n", data->philo_num);
+	// create_philos(philos);
+	start_philos();
 	return (1);
 }
