@@ -3,38 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   new_philo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:19:58 by gade-alm          #+#    #+#             */
-/*   Updated: 2022/12/25 16:39:57 by gabriel          ###   ########.fr       */
+/*   Updated: 2022/12/26 11:16:49 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-t_data	*parse_philo(int ac, char **av)
+void	parse_philo(int ac, char **av)
 {
-	t_data	*phi;
-
-	phi->philo_num = ft_atoi(av[1]);
-	phi->die_time = ft_atoi(av[2]);
-	phi->eat_time = ft_atoi(av[3]);
-	phi->sleep_time = ft_atoi(av[4]);
+	datacall()->philo_num = ft_atoi(av[1]);
+	datacall()->die_time = ft_atoi(av[2]);
+	datacall()->eat_time = ft_atoi(av[3]);
+	datacall()->sleep_time = ft_atoi(av[4]);
 	if (ac == 6)
-		phi->must_eat_num = ft_atoi(av[5]);
+		datacall()->must_eat_num = ft_atoi(av[5]);
 	else
-		phi->must_eat_num = 0;
-	return (phi);
+		datacall()->must_eat_num = -1;
+	start_philos();
 }
 
-t_data	*phicall(void)
+t_data	*datacall(void)
 {
-	static t_data	philos;
+	static t_data	data;
 
-	return (&philos);
+	return (&data);
 }
 
-t_philo	*create_philos(t_data *phi)
+t_philo	*phicall(void)
+{
+	static t_philo	philo;
+
+	return (&philo);
+}
+
+t_philo	*create_philos(int num)
 {
 	t_philo	*philo;
 
@@ -46,19 +51,10 @@ t_philo	*create_philos(t_data *phi)
 
 void	start_philos(void)
 {
-	int			i;
-	t_philo		*philo;
-	t_data		*data;
+	int		i;
 
 	i = -1;
-	printf("philo %i\n", data->philo_num);
-	while (++i < data->philo_num)
-	{
-		i = pthread_create(&philo->philo, NULL, print_message, NULL);
-		if (!i)
-			printf("error on creation of philo");
-	}
-	pthread_detach(philo->philo);
-	printf("philo:num %i\n", i);
+	while (++i < datacall()->philo_num)
+		printf("teste");
 	return ;
 }
