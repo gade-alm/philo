@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:07:06 by gade-alm          #+#    #+#             */
-/*   Updated: 2022/12/26 11:11:44 by gade-alm         ###   ########.fr       */
+/*   Updated: 2022/12/27 17:30:59 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_data{
 typedef struct s_philo{
 	int				id_num;
 	int				is_dead;
-	pthread_t		*philo;
+	pthread_t		philo;
 	t_data			*data;
 }			t_philo;
 
