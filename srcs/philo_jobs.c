@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   philo_jobs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 14:18:45 by gade-alm          #+#    #+#             */
-/*   Updated: 2022/12/27 17:56:21 by gade-alm         ###   ########.fr       */
+/*   Created: 2022/12/29 17:32:45 by gade-alm          #+#    #+#             */
+/*   Updated: 2022/12/29 19:22:19 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philo.h"
-// Your(s) program(s) should take the following arguments:
-// number_of_philosophers time_to_die time_to_eat time_to_sleep
-// [number_of_times_each_philosopher_must_eat]
-int	main(int ac, char **av)
-{
-	t_data	*data;
+#include <philo.h>
 
-	if (ac < 5 || ac > 6)
-		return (printf("Error\n"));
-	parse_philo(ac, av);
-	return (1);
+void	*philo_jobs(void *arg)
+{
+	t_philo	*philos;
+	int		i;
+
+	philos = (t_philo *)arg;
+	i = -1;
+	while (philo_alive(philos))
+	{
+		printf("%ld ms %i isn't working\n", get_time() - \
+		philos->data->seconds, philos->id_num);
+	}
+	return (NULL);
 }

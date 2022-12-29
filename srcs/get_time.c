@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prints.c                                           :+:      :+:    :+:   */
+/*   get_time.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 17:17:48 by gabriel           #+#    #+#             */
-/*   Updated: 2022/12/29 18:12:00 by gade-alm         ###   ########.fr       */
+/*   Created: 2022/12/13 16:24:08 by gabriel           #+#    #+#             */
+/*   Updated: 2022/12/29 18:19:24 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
+//Get the time in miliseconds (the start time according to the EPOCH)
 
-void	*print_message(void *arg)
+long int	get_time(void)
 {
-	(void)arg;
-	printf("teste philo: %i\n", data_call()->philo_num);
-	return (0);
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }

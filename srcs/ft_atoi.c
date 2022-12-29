@@ -6,11 +6,11 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:39:19 by gade-alm          #+#    #+#             */
-/*   Updated: 2022/12/14 16:18:12 by gade-alm         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:11:46 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philo.h"
+#include <philo.h>
 
 int	ft_atoi(const char *str)
 {

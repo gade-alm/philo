@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gettime.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/13 16:24:08 by gabriel           #+#    #+#             */
-/*   Updated: 2022/12/16 17:54:47 by gade-alm         ###   ########.fr       */
+/*   Created: 2022/12/09 14:18:45 by gade-alm          #+#    #+#             */
+/*   Updated: 2022/12/29 18:12:56 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philo.h"
-
-//Get the time in miliseconds (the start time according to the EPOCH)
-
-long int	gettime(void)
+#include <philo.h>
+// Your(s) program(s) should take the following arguments:
+// number_of_philosophers time_to_die time_to_eat time_to_sleep
+// [number_of_times_each_philosopher_must_eat]
+int	main(int ac, char **av)
 {
-	struct timeval	time;
-	t_data			data;
-
-	gettimeofday(&time, NULL);
-	data.seconds = time.tv_sec * 1000 + time.tv_usec / 1000;
-	return (data.seconds);
+	if (ac < 5 || ac > 6)
+		return (printf("Error\n"));
+	parse_philo(ac, av);
+	return (1);
 }
