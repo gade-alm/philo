@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:07:06 by gade-alm          #+#    #+#             */
-/*   Updated: 2022/12/29 19:14:38 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:59:27 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ typedef struct s_data{
 	int				must_eat_num;
 	int				eat_time;
 	int				philo_num;
-	long int		seconds;
+	long int		start;
+	int				m;
 }			t_data;
 
 typedef struct s_philo{
 	int				id_num;
-	int				*is_dead;
+	int				is_dead;
 	int				times_eat;
 	long int		last_meal;
 	int				has_fork;
@@ -48,6 +49,5 @@ int			philo_alive(t_philo *philos);
 t_philo		*create_philos(t_data *data);
 long int	get_time(void);
 void		*philo_jobs(void *arg);
-void		*print_message(void *arg);
 
 #endif

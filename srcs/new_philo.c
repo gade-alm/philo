@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:19:58 by gade-alm          #+#    #+#             */
-/*   Updated: 2022/12/29 19:18:16 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/03 16:13:30 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_philo	*create_philos(t_data *data)
 		philo[i].id_num = i + 1;
 		philo[i].has_fork = 0;
 		philo[i].times_eat = 0;
-		philo[i].is_dead = &is_dead;
+		philo[i].is_dead = 0;
 	}
 	return (philo);
 }
@@ -71,7 +71,7 @@ void	start_philos(void)
 
 	i = -1;
 	philo = create_philos(data_call());
-	data_call()->seconds = get_time();
+	data_call()->start = get_time();
 	while (++i < data_call()->philo_num)
 		pthread_create(&philo[i].philo, NULL, philo_jobs, (void *)&philo[i]);
 	while (--i > -1)
