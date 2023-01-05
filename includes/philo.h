@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:07:06 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/03 15:59:27 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/05 17:09:25 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,26 @@ typedef struct s_data{
 	int				m;
 }			t_data;
 
+typedef struct s_dead
+{
+	int				is_dead;
+	pthread_mutex_t	killer;
+}			t_dead;
+
 typedef struct s_philo{
 	int				id_num;
-	int				is_dead;
 	int				times_eat;
 	long int		last_meal;
 	int				has_fork;
 	pthread_t		philo;
 	t_data			*data;
+	t_dead			*death;
 }			t_philo;
 
 int			ft_atoi(const char *str);
 t_data		*data_call(void);
 t_philo		*phi_call(void);
+t_dead		*dead_call(void);
 void		parse_philo(int ac, char **av);
 void		start_philos(void);
 int			philo_alive(t_philo *philos);

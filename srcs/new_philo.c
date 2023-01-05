@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:19:58 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/03 16:13:30 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:56:37 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,42 +28,6 @@ void	parse_philo(int ac, char **av)
 	start_philos();
 }
 
-t_data	*data_call(void)
-{
-	static t_data	data;
-
-	return (&data);
-}
-
-t_philo	*phi_call(void)
-{
-	static t_philo	philo;
-
-	return (&philo);
-}
-
-t_philo	*create_philos(t_data *data)
-{
-	int		i;
-	int		is_dead;
-	t_philo	*philo;
-
-	i = -1;
-	philo = malloc(sizeof(t_philo) * data->philo_num);
-	if (!philo)
-		return (NULL);
-	is_dead = 0;
-	while (++i < data->philo_num)
-	{
-		philo[i].data = data_call();
-		philo[i].id_num = i + 1;
-		philo[i].has_fork = 0;
-		philo[i].times_eat = 0;
-		philo[i].is_dead = 0;
-	}
-	return (philo);
-}
-
 void	start_philos(void)
 {
 	int		i;
@@ -77,4 +41,23 @@ void	start_philos(void)
 	while (--i > -1)
 		pthread_join(philo[i].philo, NULL);
 	return ;
+}
+
+t_philo	*create_philos(t_data *data)
+{
+	int		i;
+	t_philo	*philo;
+
+	i = -1;
+	philo = malloc(sizeof(t_philo) * data->philo_num);
+	if (!philo)
+		return (NULL);
+	while (++i < data->philo_num)
+	{
+		philo[i].data = data_call();
+		philo[i].id_num = i + 1;
+		philo[i].has_fork = 0;
+		philo[i].times_eat = 0;
+	}
+	return (philo);
 }

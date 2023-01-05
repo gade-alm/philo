@@ -6,7 +6,7 @@
 #    By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 15:45:10 by gade-alm          #+#    #+#              #
-#    Updated: 2023/01/03 14:57:13 by gade-alm         ###   ########.fr        #
+#    Updated: 2023/01/05 16:54:08 by gade-alm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCS	= $(SRCS_DIR)/main.c \
 			$(SRCS_DIR)/get_time.c \
 			$(SRCS_DIR)/philo_jobs.c \
 			$(SRCS_DIR)/checkers.c \
+			$(SRCS_DIR)/struct_start.c \
 			
 SRCS_DIR = srcs
 
