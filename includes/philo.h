@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:07:06 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/05 19:02:59 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/06 12:00:41 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,17 @@ typedef struct s_philo{
 	int				times_eat;
 	long int		last_meal;
 	int				has_fork;
+	long int		sleeping;
 	pthread_t		philo;
 	t_data			*data;
 	t_dead			*death;
 	t_forks			*forks;
 }			t_philo;
 
+typedef struct s_clean
+{
+	t_philo	*philos;
+}	t_clean;
 
 int			ft_atoi(const char *str);
 t_data		*data_call(void);

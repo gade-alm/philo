@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:19:58 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/05 19:20:22 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/06 12:45:24 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	start_philos(void)
 	pthread_mutex_init(&dead_call()->killer, NULL);
 	philo = create_philos(data_call());
 	data_call()->start = get_time();
+	dead_call()->is_dead = 0;
 	while (++i < data_call()->philo_num)
 		pthread_create(&philo[i].philo, NULL, philo_jobs, (void *)&philo[i]);
 	while (--i > -1)
@@ -47,19 +48,20 @@ void	start_philos(void)
 t_philo	*create_philos(t_data *data)
 {
 	int		i;
-	t_philo	*philo;
+	t_philo	*philos;
 
 	i = -1;
-	philo = malloc(sizeof(t_philo) * data->philo_num);
-	if (!philo)
+	philos = malloc(sizeof(t_philo) * data->philo_num);
+	if (!philos)
 		return (NULL);
 	while (++i < data->philo_num)
 	{
-		philo[i].data = data_call();
-		philo[i].id_num = i + 1;
-		philo[i].has_fork = 0;
-		philo[i].times_eat = 0;
-		philo[i].last_meal = 0;
+		philos[i].data = data_call();
+		philos[i].id_num = i + 1;
+		philos[i].has_fork = 0;
+		philos[i].times_eat = 0;
+		philos[i].last_meal = 0;
+		philos[i].sleeping = 0;
 	}
-	return (philo);
+	return (philos);
 }
