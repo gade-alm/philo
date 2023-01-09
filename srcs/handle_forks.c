@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_start.c                                     :+:      :+:    :+:   */
+/*   handle_forks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/05 16:53:09 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/08 18:38:16 by gabriel          ###   ########.fr       */
+/*   Created: 2023/01/07 22:00:47 by gabriel           #+#    #+#             */
+/*   Updated: 2023/01/09 17:00:28 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-t_philo	*phi_call(void)
+void	forks_init(t_philo *philos)
 {
-	static t_philo	philo;
+	int	i;
 
-	return (&philo);
-}
-
-t_data	*data_call(void)
-{
-	static t_data	data;
-
-	return (&data);
-}
-
-t_dead	*dead_call(void)
-{
-	static t_dead	death;
-
-	return (&death);
-}
-
-t_forks	*forks_call(void)
-{
-	static t_forks	forks;
-
-	return (&forks);
+	i = -1;
+	while (++i < data_call()->philo_num)
+		philos->forks->num_forks[i] = malloc(sizeof(int *) * \
+	(data_call()->philo_num));
+	if (!philos->forks->num_forks)
+		return ;
+	while (++i < data_call()->philo_num)
+		pthread_mutex_init(&forks_call()->forks[i], NULL);
 }

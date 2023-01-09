@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_philo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:19:58 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/06 14:05:10 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:12:04 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	start_philos(void)
 
 	i = -1;
 	pthread_mutex_init(&dead_call()->killer, NULL);
+	forks_init(forks_call());
 	philo = create_philos(data_call());
 	data_call()->start = get_time();
 	dead_call()->is_dead = 0;
@@ -58,10 +59,11 @@ t_philo	*create_philos(t_data *data)
 	{
 		philos[i].data = data_call();
 		philos[i].id_num = i + 1;
-		philos[i].has_fork = 0;
 		philos[i].times_eat = 0;
 		philos[i].last_meal = 0;
 		philos[i].sleeping = 0;
+		philos[i].l_fork = 0;
+		philos[i].r_fork = 0;
 	}
 	return (philos);
 }
