@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:07:06 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/09 16:44:21 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/01/11 18:33:36 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct s_dead
 
 typedef struct s_forks
 {
-	int				*num_forks;
-	pthread_mutex_t *forks;
+	int				has_fork;
+	pthread_mutex_t	forks;
 }		t_forks;
 
 typedef struct s_philo{
@@ -47,8 +47,6 @@ typedef struct s_philo{
 	int				times_eat;
 	long int		last_meal;
 	long int		sleeping;
-	int				l_fork;
-	int				r_fork;
 	pthread_t		philo;
 	t_data			*data;
 	t_dead			*death;
@@ -62,9 +60,7 @@ typedef struct s_clean
 
 int			ft_atoi(const char *str);
 t_data		*data_call(void);
-t_philo		*phi_call(void);
 t_dead		*dead_call(void);
-t_forks		*forks_call(void);
 void		parse_philo(int ac, char **av);
 void		start_philos(void);
 t_philo		*create_philos(t_data *data);
@@ -74,9 +70,8 @@ long int	get_time(void);
 void		*philo_jobs(void *arg);
 void		philo_eat(t_philo *philos);
 void		philo_nap(t_philo *philos);
-void		forks_init(t_philo *philos);
-void		take_forks(t_philo *philos);
+int			check_corpse(void);
+t_forks		*forks_init(t_data *data);
 int			check_forks(t_philo *philos);
-int			define_forks(t_philo *philos);
 
 #endif

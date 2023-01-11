@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_jobs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 17:32:45 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/09 15:51:51 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/01/11 16:53:36 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void	philo_eat(t_philo *philos)
 
 	eat_time = get_time();
 	eating = 0;
-	print_message(philos, "is eating");
 	usleep(200);
 	if (check_forks(philos))
 	{
 		while (eating <= data_call()->eat_time && philo_alive(philos))
 			eating = get_time() - eat_time;
+		print_message(philos, "is eating");
 	}	
 	return ;
 }

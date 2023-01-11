@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_philo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:19:58 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/09 11:12:04 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/01/11 18:37:53 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,18 @@ void	parse_philo(int ac, char **av)
 void	start_philos(void)
 {
 	int		i;
+	t_forks	*forks;
 	t_philo	*philo;
 
 	i = -1;
 	pthread_mutex_init(&dead_call()->killer, NULL);
-	forks_init(forks_call());
+	forks = forks_init(data_call());
 	philo = create_philos(data_call());
 	data_call()->start = get_time();
 	dead_call()->is_dead = 0;
+	while (++i < data_call()->philo_num)
+		philo[i].forks = forks;
+	i = -1;
 	while (++i < data_call()->philo_num)
 		pthread_create(&philo[i].philo, NULL, philo_jobs, (void *)&philo[i]);
 	while (--i > -1)
@@ -62,8 +66,6 @@ t_philo	*create_philos(t_data *data)
 		philos[i].times_eat = 0;
 		philos[i].last_meal = 0;
 		philos[i].sleeping = 0;
-		philos[i].l_fork = 0;
-		philos[i].r_fork = 0;
 	}
 	return (philos);
 }
