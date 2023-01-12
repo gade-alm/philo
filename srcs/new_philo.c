@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:19:58 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/11 18:37:53 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:25:57 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,10 @@ void	start_philos(void)
 	t_philo	*philo;
 
 	i = -1;
+	data_call()->start = get_time();
 	pthread_mutex_init(&dead_call()->killer, NULL);
 	forks = forks_init(data_call());
 	philo = create_philos(data_call());
-	data_call()->start = get_time();
-	dead_call()->is_dead = 0;
 	while (++i < data_call()->philo_num)
 		philo[i].forks = forks;
 	i = -1;

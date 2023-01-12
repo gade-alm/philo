@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:07:06 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/11 18:43:56 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:38:53 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void		print_message(t_philo *philos, char *str);
 int			philo_alive(t_philo *philos);
 long int	get_time(void);
 void		*philo_jobs(void *arg);
-void		philo_eat(t_philo *philos);
-void		philo_nap(t_philo *philos);
+int			philo_eat(t_philo *philos);
+int			philo_nap(t_philo *philos);
 int			check_corpse(void);
 t_forks		*forks_init(t_data *data);
 int			check_forks(t_philo *philos);

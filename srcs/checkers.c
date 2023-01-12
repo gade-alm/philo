@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:46:53 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/11 18:52:52 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:18:23 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,24 @@
 
 int	check_corpse(void)
 {
-	int			corpse;
+	int	corpse;
 
 	pthread_mutex_lock(&dead_call()->killer);
 	corpse = dead_call()->is_dead;
 	pthread_mutex_unlock(&dead_call()->killer);
 	if (corpse)
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }
 
 int	philo_alive(t_philo *philos)
 {
 	long int	last;
-	t_data		*data;
 
-	if (!check_corpse())
+	if (check_corpse())
 		return (0);
-	data = data_call();
 	last = get_time() - philos->last_meal;
-	if (last >= data->die_time)
+	if (last >= philos->data->die_time)
 	{
 		pthread_mutex_lock(&dead_call()->killer);
 		dead_call()->is_dead++;
