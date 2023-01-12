@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:19:58 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/12 14:25:57 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:32:06 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ t_philo	*create_philos(t_data *data)
 		philos[i].times_eat = 0;
 		philos[i].last_meal = 0;
 		philos[i].sleeping = 0;
+		philos[i].many_forks = 0;
+		philos[i].has_eaten = 0;
 	}
 	return (philos);
 }

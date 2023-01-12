@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:07:06 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/12 14:38:53 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:31:54 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_philo{
 	int				times_eat;
 	long int		last_meal;
 	long int		sleeping;
+	int				many_forks;
+	int				has_eaten;
 	pthread_t		philo;
 	t_data			*data;
 	t_dead			*death;

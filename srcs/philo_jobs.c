@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 17:32:45 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/12 15:24:20 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:36:15 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ int	philo_eat(t_philo *philos)
 		print_message(philos, "is eating");
 		while (eating <= data_call()->eat_time && philo_alive(philos))
 			eating = get_time() - eat_time;
+		philos->has_eaten = 1;
+		philos->times_eat++;
+		philos->last_meal = get_time();
 		usleep(100);
 	}
-	philos->last_meal = get_time();
-	philos->times_eat++;
 	return (1);
 }
 
