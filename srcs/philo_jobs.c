@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_jobs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 17:32:45 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/12 17:36:15 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/14 11:55:14 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,13 @@ int	philo_eat(t_philo *philos)
 	eating = 0;
 	if (check_corpse())
 		return (0);
-	usleep(100);
-	if (check_forks(philos))
+	if (philos->many_forks == 2)
 	{
 		print_message(philos, "is eating");
 		while (eating <= data_call()->eat_time && philo_alive(philos))
 			eating = get_time() - eat_time;
-		philos->has_eaten = 1;
 		philos->times_eat++;
+		philos->many_forks = 0;
 		philos->last_meal = get_time();
 		usleep(100);
 	}
@@ -59,7 +58,7 @@ void	*philo_jobs(void *arg)
 	philos->last_meal = data_call()->start;
 	while (philo_alive(philos))
 	{
-		philo_eat(philos);
+		check_forks(philos);
 		if (philos->times_eat == philos->data->must_eat_num)
 			return (NULL);
 		philo_nap(philos);
