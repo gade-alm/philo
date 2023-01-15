@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:07:06 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/12 17:31:54 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/15 17:17:48 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct s_philo{
 	long int		sleeping;
 	int				many_forks;
 	int				has_eaten;
+	int				left_fork;
+	int				right_fork;
 	pthread_t		philo;
 	t_data			*data;
 	t_dead			*death;
@@ -71,6 +73,7 @@ int			philo_alive(t_philo *philos);
 long int	get_time(void);
 void		*philo_jobs(void *arg);
 int			philo_eat(t_philo *philos);
+int			available_forks(t_philo *phi, int index);
 int			philo_nap(t_philo *philos);
 int			check_corpse(void);
 t_forks		*forks_init(t_data *data);
