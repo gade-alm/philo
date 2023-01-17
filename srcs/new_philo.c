@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_philo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:19:58 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/12 17:32:06 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:38:33 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ void	parse_philo(int ac, char **av)
 		data_call()->must_eat_num = ft_atoi(av[5]);
 	else
 		data_call()->must_eat_num = -1;
-	if (!data_call()->philo_num || !data_call()->die_time || !data_call()-> \
-	sleep_time || !data_call()->eat_time || !data_call()->must_eat_num)
-		printf("AJEITAR O FREE\n");
+	if (data_call()->philo_num == 0 || data_call()->die_time == 0 || data_call()-> \
+	sleep_time == 0 || data_call()->eat_time == 0)
+	{
+		printf("Invalid arguments, please check values\n");
+		return ;
+	}
 	start_philos();
 }
 
@@ -46,6 +49,9 @@ void	start_philos(void)
 		pthread_create(&philo[i].philo, NULL, philo_jobs, (void *)&philo[i]);
 	while (--i > -1)
 		pthread_join(philo[i].philo, NULL);
+	i = -1;
+	while (++i < data_call()->philo_num)
+		pthread_mutex_destroy(&forks[i].forks);
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 17:32:45 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/15 17:35:22 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/01/16 13:16:48 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	philo_eat(t_philo *philos)
 	eating = 0;
 	if (check_corpse())
 		return (0);
+	usleep(100);
 	if (philo_alive(philos))
 	{
 		print_message(philos, "is eating");
@@ -44,7 +45,6 @@ int	philo_eat(t_philo *philos)
 			eating = get_time() - eat_time;
 		philos->last_meal = get_time();
 		philos->has_eaten = 2;
-		// usleep(100);
 		available_forks(philos, philos->right_fork);
 		available_forks(philos, philos->left_fork);
 		philos->many_forks = 0;
@@ -62,8 +62,12 @@ void	*philo_jobs(void *arg)
 	while (philo_alive(philos))
 	{
 		check_forks(philos);
+		if (philos->times_eat == data_call()->must_eat_num)
+			return (NULL);
 		philo_nap(philos);
-		print_message(philos, "is thinking");
+		usleep(100);
+		if (!check_corpse())
+			print_message(philos, "is thinking");
 	}
 	return (NULL);
 }

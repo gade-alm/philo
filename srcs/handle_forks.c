@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 22:00:47 by gabriel           #+#    #+#             */
-/*   Updated: 2023/01/15 17:33:40 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/01/16 10:33:15 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ int	check_forks(t_philo *phi)
 	{
 		available_forks(phi, right);
 		available_forks(phi, left);
-		printf("ID: %i RIGHT:%i LEFT:%i\n", phi->id_num, right, left);
 		if (phi->many_forks == 2)
 			philo_eat(phi);
+		return (1);
 	}
-	return (1);
+	return (0);
 }
 
 t_forks	*forks_init(t_data *data)
