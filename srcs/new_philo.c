@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_philo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:19:58 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/20 16:07:33 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/02/27 18:44:52 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	parse_philo(int ac, char **av)
 		data_call()->must_eat_num = ft_atoi(av[5]);
 	else
 		data_call()->must_eat_num = -1;
-	if (data_call()->philo_num == 0 || data_call()->die_time == 0 || data_call()-> \
-	sleep_time == 0 || data_call()->eat_time == 0)
+	if (data_call()->philo_num == 0 || data_call()->die_time == 0 \
+	|| data_call()-> sleep_time == 0 || data_call()->eat_time == 0)
 	{
 		printf("Invalid arguments, please check values\n");
 		return ;

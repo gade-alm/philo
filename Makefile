@@ -3,22 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
+#    By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 15:45:10 by gade-alm          #+#    #+#              #
-#    Updated: 2023/01/17 11:30:11 by gabriel          ###   ########.fr        #
+#    Updated: 2023/02/27 18:42:29 by gade-alm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	= $(SRCS_DIR)/main.c \
-			$(SRCS_DIR)/ft_atoi.c \
 			$(SRCS_DIR)/new_philo.c \
 			$(SRCS_DIR)/get_time.c \
 			$(SRCS_DIR)/philo_jobs.c \
 			$(SRCS_DIR)/checkers.c \
-			$(SRCS_DIR)/struct_start.c \
 			$(SRCS_DIR)/prints.c \
 			$(SRCS_DIR)/handle_forks.c \
+			$(SRCS_DIR)/utils.c \
 			
 SRCS_DIR = srcs
 
@@ -30,8 +29,7 @@ NAME	= philo
 
 CC		= cc
 
-CFLAGS	= -Wall -Wextra -Werror -pthread -I includes -g -fsanitize=thread
-
+CFLAGS	= -Wall -Wextra -Werror -pthread -I includes -g -fsanitize=address
 RM		= rm -rf
 
 all: $(NAME)

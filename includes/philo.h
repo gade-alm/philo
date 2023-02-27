@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:07:06 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/01/17 11:37:30 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/02/27 18:47:08 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@
 # include <stdlib.h>
 # include <sys/time.h>
 
-typedef struct s_data{
+typedef struct s_data	t_data;
+typedef struct s_dead	t_dead;
+typedef struct s_forks	t_forks;
+typedef struct s_philo	t_philo;
+
+struct s_data{
 	int				die_time;
 	int				sleep_time;
 	int				think_time;
@@ -27,22 +32,25 @@ typedef struct s_data{
 	int				eat_time;
 	int				philo_num;
 	long int		start;
-	int				m;
-}			t_data;
+	t_data			*data;
+	t_dead			*death;
+	t_forks			*forks;
+	t_philo			*philos;
+};
 
-typedef struct s_dead
+struct s_dead
 {
 	int				is_dead;
 	pthread_mutex_t	killer;
-}			t_dead;
+};
 
-typedef struct s_forks
+struct s_forks
 {
 	int				has_fork;
 	pthread_mutex_t	forks;
-}		t_forks;
+};
 
-typedef struct s_philo{
+struct s_philo{
 	int				id_num;
 	int				times_eat;
 	long int		last_meal;
@@ -55,28 +63,25 @@ typedef struct s_philo{
 	t_data			*data;
 	t_dead			*death;
 	t_forks			*forks;
-}			t_philo;
-
-typedef struct s_clean
-{
-	t_philo	*philos;
-}	t_clean;
+};
 
 int			ft_atoi(const char *str);
 t_data		*data_call(void);
 t_dead		*dead_call(void);
+t_forks		*forks(void);
 void		parse_philo(int ac, char **av);
 void		start_philos(void);
-t_philo		*create_philos(t_data *data);
-void		print_message(t_philo *philos, char *str);
-int			philo_alive(t_philo *philos);
 long int	get_time(void);
-void		*philo_jobs(void *arg);
-int			philo_eat(t_philo *philos);
-int			available_forks(t_philo *phi, int index);
-int			philo_nap(t_philo *philos);
-int			check_corpse(void);
 t_forks		*forks_init(t_data *data);
+t_philo		*create_philos(t_data *data);
+void		*philo_jobs(void *arg);
+int			philo_alive(t_philo *philos);
+int			check_corpse(void);
+void		print_message(t_philo *philos, char *str);
 int			check_forks(t_philo *philos);
+int			available_forks(t_philo *phi, int index);
+void		put_forks(t_philo *phi, int index);
+int			philo_eat(t_philo *philos);
+int			philo_nap(t_philo *philos);
 
 #endif

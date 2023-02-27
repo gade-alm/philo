@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_forks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 22:00:47 by gabriel           #+#    #+#             */
-/*   Updated: 2023/01/16 10:33:15 by gabriel          ###   ########.fr       */
+/*   Updated: 2023/02/27 18:30:16 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,15 @@ int	available_forks(t_philo *phi, int index)
 		if (phi->forks[index].has_fork == 0)
 		{
 			phi->forks[index].has_fork = 1;
-			phi->many_forks++;
+			phi->many_forks += 1;
 			print_message(phi, "has taken a fork");
 			pthread_mutex_unlock(&phi->forks[index].forks);
-			return (1);
+			break ;
 		}
-		if (phi->has_eaten > 0 && phi->forks[index].has_fork == 1)
-		{
-			phi->forks[index].has_fork = 0;
-			phi->has_eaten--;
+		else
 			pthread_mutex_unlock(&phi->forks[index].forks);
-			return (0);
-		}
-		pthread_mutex_unlock(&phi->forks[index].forks);
 	}
-	return (1);
+	return (0);
 }
 
 int	check_forks(t_philo *phi)
@@ -42,13 +36,11 @@ int	check_forks(t_philo *phi)
 	int	left;
 	int	right;
 
-	right = phi->id_num;
-	left = phi->id_num + 1;
-	if (phi->id_num == phi->data->philo_num)
-		left = 1;
+	right = phi->id_num - 1;
+	left = (phi->id_num != data_call()->philo_num) * (phi->id_num);
 	phi->right_fork = right;
 	phi->left_fork = left;
-	while (philo_alive(phi))
+	if (philo_alive(phi))
 	{
 		available_forks(phi, right);
 		available_forks(phi, left);
@@ -57,6 +49,13 @@ int	check_forks(t_philo *phi)
 		return (1);
 	}
 	return (0);
+}
+
+void	put_forks(t_philo *phi, int index)
+{
+	pthread_mutex_lock(&phi->forks[index].forks);
+	phi->forks[index].has_fork = 0;
+	pthread_mutex_unlock(&phi->forks[index].forks);
 }
 
 t_forks	*forks_init(t_data *data)
