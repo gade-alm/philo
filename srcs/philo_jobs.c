@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 17:32:45 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/02/27 17:44:57 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:25:52 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	*philo_jobs(void *arg)
 	t_philo	*philos;
 
 	philos = (t_philo *)arg;
+	if (philos->id_num % 2 == 0)
+		usleep(70000);
 	philos->last_meal = data_call()->start;
 	while (philo_alive(philos))
 	{

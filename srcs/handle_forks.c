@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 22:00:47 by gabriel           #+#    #+#             */
-/*   Updated: 2023/02/27 18:30:16 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:27:05 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ int	check_forks(t_philo *phi)
 	int	left;
 	int	right;
 
-	right = phi->id_num - 1;
-	left = (phi->id_num != data_call()->philo_num) * (phi->id_num);
+	right = phi->id_num;
+	left = phi->id_num - 1;
+	if (right == data_call()->philo_num)
+		right = 0;
 	phi->right_fork = right;
 	phi->left_fork = left;
 	if (philo_alive(phi))

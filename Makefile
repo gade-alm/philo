@@ -6,7 +6,7 @@
 #    By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 15:45:10 by gade-alm          #+#    #+#              #
-#    Updated: 2023/02/27 18:42:29 by gade-alm         ###   ########.fr        #
+#    Updated: 2023/02/28 16:09:02 by gade-alm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ SRCS	= $(SRCS_DIR)/main.c \
 			$(SRCS_DIR)/get_time.c \
 			$(SRCS_DIR)/philo_jobs.c \
 			$(SRCS_DIR)/checkers.c \
-			$(SRCS_DIR)/prints.c \
 			$(SRCS_DIR)/handle_forks.c \
 			$(SRCS_DIR)/utils.c \
 			
@@ -29,7 +28,7 @@ NAME	= philo
 
 CC		= cc
 
-CFLAGS	= -Wall -Wextra -Werror -pthread -I includes -g -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -pthread -I includes -g #-fsanitize=address
 RM		= rm -rf
 
 all: $(NAME)
