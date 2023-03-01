@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 16:53:09 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/02/28 17:05:51 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:21:37 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_atoi(const char *str)
 	conv = 0;
 	while (str[i] == 32 || (str[i] > 8 && str[i] < 14))
 		i++;
-	while (str [i] == '-' || str[i] == '+')
+	if (str [i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			signal *= -1;
@@ -54,17 +54,17 @@ int	ft_atoi(const char *str)
 		return (0);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		conv = (conv * 10 + (signal * (str[i] - '0')));
+		conv = (conv * 10 + (str[i] - '0'));
 			i++;
 		if (conv > 2147483647)
 			return (0);
 	}
-	return (conv);
+	return (conv * signal);
 }
 
 void	print_message(t_philo *philos, char *str)
 {
-	printf("%ld ms %i %s\n", get_time() - \
+	printf("%ld %i %s\n", get_time() - \
 		philos->data->start, philos->id_num, str);
 	return ;
 }
