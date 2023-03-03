@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 17:32:45 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/02/28 17:25:52 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:26:47 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	philo_eat(t_philo *philos)
 		philos->last_meal = get_time();
 		put_forks(philos, philos->right_fork);
 		put_forks(philos, philos->left_fork);
-		philos->has_eaten = 1;
 		philos->many_forks = 0;
 		philos->times_eat++;
 	}

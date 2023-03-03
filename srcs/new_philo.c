@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:19:58 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/03/01 16:18:03 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:10:01 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ void	start_philos(void)
 	i = -1;
 	data_call()->start = get_time();
 	pthread_mutex_init(&dead_call()->killer, NULL);
-	forks = forks_init(data_call());
 	philo = create_philos(data_call());
+	forks = forks_init(data_call());
+	if (!philo || !forks)
+		return (free_all(forks, philo));
 	while (++i < data_call()->philo_num)
 		philo[i].forks = forks;
 	i = -1;
@@ -66,7 +68,7 @@ t_philo	*create_philos(t_data *data)
 	t_philo	*philos;
 
 	i = -1;
-	philos = malloc(sizeof(t_philo) * data->philo_num);
+	philos = malloc(sizeof(t_philo) * (data_call()->philo_num));
 	if (!philos)
 		return (NULL);
 	while (++i < data->philo_num)
@@ -77,7 +79,6 @@ t_philo	*create_philos(t_data *data)
 		philos[i].last_meal = 0;
 		philos[i].sleeping = 0;
 		philos[i].many_forks = 0;
-		philos[i].has_eaten = 0;
 	}
 	return (philos);
 }

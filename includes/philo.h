@@ -6,7 +6,7 @@
 /*   By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:07:06 by gade-alm          #+#    #+#             */
-/*   Updated: 2023/02/28 15:05:10 by gade-alm         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:03:55 by gade-alm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ struct s_philo{
 	long int		last_meal;
 	long int		sleeping;
 	int				many_forks;
-	int				has_eaten;
 	int				left_fork;
 	int				right_fork;
 	pthread_t		philo;
@@ -68,7 +67,7 @@ struct s_philo{
 int			ft_atoi(const char *str);
 t_data		*data_call(void);
 t_dead		*dead_call(void);
-t_forks		*forks(void);
+void		free_all(t_forks *forks, t_philo *philos);
 void		parse_philo(int ac, char **av);
 void		start_philos(void);
 long int	get_time(void);

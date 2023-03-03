@@ -6,7 +6,7 @@
 #    By: gade-alm <gade-alm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 15:45:10 by gade-alm          #+#    #+#              #
-#    Updated: 2023/02/28 16:09:02 by gade-alm         ###   ########.fr        #
+#    Updated: 2023/03/03 15:29:33 by gade-alm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ NAME	= philo
 
 CC		= cc
 
-CFLAGS	= -Wall -Wextra -Werror -pthread -I includes -g #-fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -pthread -I includes -g -fsanitize=address
 RM		= rm -rf
 
 all: $(NAME)
